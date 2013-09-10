@@ -43,14 +43,14 @@ puts "In order to generate the rule, I need to ask you a few questions.".foregro
 puts "\n\nWhich rule header option do you wish to use?".foreground(:red).bright
 puts "Options available:\n".foreground(:red).bright
 
-puts "alert - generate an alert using the selected alert method, and then log the packet".foreground(:cyan).bright
-puts "log - log the packet".foreground(:cyan).bright
-puts "pass - ignore the packet".foreground(:cyan).bright
-puts "activate - alert and then turn on another dynamic rule".foreground(:cyan).bright
-puts "dynamic - remain idle until activated by an activate rule , then act as a log rule".foreground(:cyan).bright
-puts "drop - block and log the packet".foreground(:cyan).bright
-puts "reject - block the packet, log it, and then send a TCP reset if the protocol is TCP or an ICMP port unreachable message if the protocol is UDP.".foreground(:cyan).bright
-puts "sdrop - block the packet but do not log it.".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " alert".foreground(:blue).bright    + " - generate an alert using the selected alert method, and then log the packet".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " log".foreground(:blue).bright      + " - log the packet".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " pass".foreground(:blue).bright     + " - ignore the packet".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " activate".foreground(:blue).bright + " - alert and then turn on another dynamic rule".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " dynamic".foreground(:blue).bright  + " - remain idle until activated by an activate rule , then act as a log rule".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " drop".foreground(:blue).bright     + " - block and log the packet".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " reject".foreground(:blue).bright   + " - block the packet, log it, and then send a TCP reset if the protocol is TCP or an ICMP port unreachable message if the protocol is UDP.".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " sdrop".foreground(:blue).bright    + " - block the packet but do not log it.".foreground(:cyan).bright
 print prompt
 rule_action = STDIN.gets.chomp()
 
@@ -58,7 +58,7 @@ puts
 puts "What protocol do you wish to analyze?".foreground(:red).bright
 puts "Options available:\n".foreground(:cyan).bright
 
-puts "TCP, UDP, IP, ICMP".foreground(:cyan).bright
+puts "[+] TCP, UDP, IP, ICMP".foreground(:cyan).bright
 puts "In the future there may be more, such as ARP, IGRP, GRE, OSPF, RIP, IPX, etc.".foreground(:cyan).bright
 print prompt
 protocol = STDIN.gets.chomp()
@@ -75,7 +75,8 @@ src_port = STDIN.gets.chomp()
 
 puts
 puts "Whats the traffic direction you wish to monitor?".foreground(:red).bright
-puts "Options available: ->, <>".foreground(:cyan).bright
+puts "Options available:".foreground(:cyan).bright 
+puts "[+] ->, <>".foreground(:cyan).bright
 print prompt
 traffic_direction = STDIN.gets.chomp()
 
@@ -91,32 +92,66 @@ dst_port = STDIN.gets.chomp()
 
 puts
 puts "What rule message do you wish to use?".foreground(:red).bright
-puts "Options available: Keylogger detected, APT, TROJAN, C2 Initial Beacon..... etc...".foreground(:cyan).bright
+puts "Options available: Message can be whatever you want it to be! Keylogger detected, APT, TROJAN, C2 Initial Beacon..... etc...".foreground(:cyan).bright
 print prompt
 rule_msg = STDIN.gets.chomp()
 
 puts
 puts "What rule options do you wish to use?".foreground(:red).bright
-puts "Content options available: content, nocase, rawbytes, ..... etc... coming soon".foreground(:cyan).bright
+puts "Content options available: content, nocase, rawbytes, ..... etc... *FULL official snort options coming soon".foreground(:cyan).bright
 print prompt
 rule_options = STDIN.gets.chomp()
 
 puts
 puts "What content keyword do you wish to use?".foreground(:red).bright
-puts "Options available are whatever you like them to be: w0rm1, 77 30 72 6d 31..... etc... coming soon".foreground(:cyan).bright
+puts "Options available are whatever you like them to be based on your malware sample! w0rm1, 77 30 72 6d 31..... etc...".foreground(:cyan).bright
 print prompt
 content_keyword = STDIN.gets.chomp()
 
 
 puts
 puts "What classtype do you wish to use?".foreground(:red).bright
-puts "Options available:" 
-puts "attempted-admin, attempted-user, inappropriate-content, policy-violation, shellcode-detect".foreground(:cyan).bright
-puts "successful-admin, successful-user, trojan-activity, unsuccessful-user, web-application-attack".foreground(:cyan).bright 
-puts "attempted-dos, attempted-recon, bad-unknown, default-login-attempt, denial-of-service, misc-attack, non-standard-protocol".foreground(:cyan).bright
-puts "rpc-portmap-decode, successful-dos, successful-recon-largescale, successful-recon-limited, suspicious-filename-detect, suspicious-login".foreground(:cyan).bright
-puts "system-call-detect, unusual-client-port-connection, web-application-activity, icmp-event, misc-activity, network-scan".foreground(:cyan).bright
-puts "not-suspicious, protocol-command-decode, string-detect, unknown, tcp-connection".foreground(:cyan).bright
+puts "Options available:"
+puts "  ______________________________________________________________________________________________________________  "
+puts " |Classtype                      | Description                                                   | Priority     | "
+puts " ---------------------------------------------------------------------------------------------------------------- "
+puts "  attempted-admin".foreground(:blue).bright + "                | Attempted Administrator Privilege Gain                        | high         | "
+puts "  attempted-user".foreground(:blue).bright + "                 | Attempted User Privilege Gain                                 | high         | "
+puts "  inappropriate-content".foreground(:blue).bright + "          | Inappropriate Content was Detected                            | high         | "
+puts "  policy-violation".foreground(:blue).bright + "               | Potential Corporate Privacy Violation                         | high         | "
+puts "  shellcode-detect".foreground(:blue).bright + "               | Executable code was detected                                  | high         | "
+puts "  successful-admin".foreground(:blue).bright + "               | Successful Administrator Privilege Gain                       | high         | "
+puts "  successful-user".foreground(:blue).bright + "                | Successful User Privilege Gain                                | high         | "
+puts "  trojan-activity".foreground(:blue).bright + "                | A Network Trojan was detected                                 | high         | "
+puts "  unsuccessful-user".foreground(:blue).bright + "              | Unsuccessful User Privilege Gain                              | high         | "
+puts "  web-application-attack".foreground(:blue).bright + "         | Web Application Attack                                        | high         | "
+puts "  attempted-dos".foreground(:blue).bright + "                  | Attempted Denial of Service                                   | medium       | "
+puts "  attempted-recon".foreground(:blue).bright + "                | Attempted Information Leak                                    | medium       | "
+puts "  bad-unknown".foreground(:blue).bright + "                    | Potentially Bad Traffic                                       | medium       | "
+puts "  default-login-attempt".foreground(:blue).bright + "          | Attempt to login by a default username and password           | medium       | "
+puts "  denial-of-service".foreground(:blue).bright + "              | Detection of a Denial of Service Attack                       | medium       | "
+puts "  misc-attack".foreground(:blue).bright + "                    | Misc Attack                                                   | medium       | "
+puts "  non-standard-protocol".foreground(:blue).bright + "          | Detection of a non-standard protocol or event                 | medium       | "
+puts "  rpc-portmap-decode".foreground(:blue).bright + "             | Decode of an RPC Query                                        | medium       | "
+puts "  successful-dos".foreground(:blue).bright + "                 | Denial of Service                                             | medium       | "
+puts "  successful-recon-largescale".foreground(:blue).bright + "    | Large Scale Information Leak                                  | medium       | "
+puts "  successful-recon-limited".foreground(:blue).bright + "       | Information Leak                                              | medium       | "
+puts "  suspicious-filename-detect".foreground(:blue).bright + "     | A suspicious filename was detected                            | medium       | "
+puts "  suspicious-login".foreground(:blue).bright + "               | An attempted login using a suspicious user- name was detected | medium       | "
+puts "  system-call-detect".foreground(:blue).bright + "             | A system call was detected                                    | medium       | "
+puts "  unusual-client-port-connection".foreground(:blue).bright + " | A client was using an unusual port                            | medium       | "
+puts "  web-application-activity".foreground(:blue).bright + "       | Access to a potentially vulnerable web application            | medium       | "
+puts "  icmp-event".foreground(:blue).bright + "                     | Generic ICMP event                                            | low          | "
+puts "  misc-activity".foreground(:blue).bright + "                  | Misc activity                                                 | low          | "
+puts "  network-scan".foreground(:blue).bright + "                   | Detection of a Network Scan                                   | low          | "
+puts "  not-suspicious".foreground(:blue).bright + "                 | Not Suspicious Traffic                                        | low          | "
+puts "  protocol-command-decode".foreground(:blue).bright + "        | Generic Protocol Command Decode                               | low          | "
+puts "  string-detect".foreground(:blue).bright + "                  | A suspicious string was detected                              | low          | "
+puts "  unknown".foreground(:blue).bright + "                        | Unknown Traffic                                               | low          | "
+puts "  tcp-connection".foreground(:blue).bright + "                 | A TCP connection was detected                                 | very low     | "
+puts "  _______________________________________________________________________________________________________________ "
+
+
 print prompt
 classtype = STDIN.gets.chomp()
 
