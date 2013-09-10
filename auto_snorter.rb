@@ -2,7 +2,6 @@
 require 'rainbow'
 
 # This script automatically creates very simplified snort rules based on user input.
-# Written by Rick Flores @nanotechz9l
 
 =begin
  def banner()
@@ -147,6 +146,6 @@ rev = STDIN.gets.chomp()
 puts
 puts <<MESSAGE
 Snort rule created successfully: 
-#{rule_action} #{protocol} #{src_ip} #{src_port} #{traffic_direction} #{dst_ip} #{dst_port} (msg: "#{rule_msg}"; #{rule_options}; "#{content_keyword}"; reference:url,#{ref_url; }; classtype:#{classtype}; sid: #{sid}; rev:#{rev})
+#{rule_action} #{protocol} #{src_ip} #{src_port} #{traffic_direction} #{dst_ip} #{dst_port} (msg: "#{rule_msg}"; #{rule_options}:"#{content_keyword}"; reference:url,#{ref_url; }; classtype:#{classtype}; sid: #{sid}; rev:#{rev})
 MESSAGE
 puts
