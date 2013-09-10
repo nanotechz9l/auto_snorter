@@ -3,24 +3,25 @@ require 'rainbow'
 
 # This script automatically creates very simplified snort rules based on user input.
 
-=begin
  def banner()
  print """ 
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           _____ ____   
-          ----,\    )
-           --==\\  /           Auto Snorter v0.0.1 Locked, stocked, and fully auto swine time... <////~
-            --==\\/
+         <----,\ -- )
+          <--==\\ -/           Auto Snorter v0.0.1 Locked, stocked, and fully auto.... <////~
+           <--==\\/
           .-~~~~-.Y|\\_        by Rick Flores @nanotechz9l
        @_/        /  66\_      0xnanoquetz9l[--at--]gmail.com
-         |    \   \   _(")
+         |    \   \   _('')
           \   /-| ||'--'       Automation station!
-            \_\  \_\\
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-print """ 
-=end
-
-prompt			= 'auto_snorter:~#'
+           \_\  \_\\_\
+   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""" 
+end
+banner()
+ 
+prompt			= 'auto_snorter: '
 rule_action		= ARGV[0]
 protocol		= ARGV[1]
 src_ip			= ARGV[2]
@@ -36,10 +37,8 @@ ref_url			= ARGV[11]
 sid			= ARGV[12]
 rev			= ARGV[13]
 
-
-
-puts "\n\nI will create a snort rule automatically for you".foreground(:blue).bright
-puts "In order to generate the rule, I need to ask you a few questions.".foreground(:blue).bright
+puts "I will create a snort rule automatically for you".foreground(:blue).bright
+puts "In order to generate the rule, I need to ask you a few quick questions.".foreground(:blue).bright
 puts "\n\nWhich rule header option do you wish to use?".foreground(:red).bright
 puts "Options available:\n".foreground(:red).bright
 
@@ -54,8 +53,7 @@ puts "[+]".foreground(:cyan).bright + " sdrop".foreground(:blue).bright    + " \
 print prompt
 rule_action = STDIN.gets.chomp()
 
-puts
-puts "What protocol do you wish to analyze?".foreground(:red).bright
+puts "\nWhat protocol do you wish to analyze?".foreground(:red).bright
 puts "Options available:\n".foreground(:cyan).bright
 
 puts "[+] TCP, UDP, IP, ICMP".foreground(:cyan).bright
@@ -63,54 +61,44 @@ puts "In the future there may be more, such as ARP, IGRP, GRE, OSPF, RIP, IPX, e
 print prompt
 protocol = STDIN.gets.chomp()
 
-puts
-puts "Whats the source ip address you wish to monitor?".foreground(:red).bright
+puts "\nWhats the source ip address you wish to monitor?".foreground(:red).bright
 print prompt
 src_ip = STDIN.gets.chomp()
 
-puts
-puts "Whats the source port you wish to monitor?".foreground(:red).bright
+puts "\nWhats the source port you wish to monitor?".foreground(:red).bright
 print prompt
 src_port = STDIN.gets.chomp()
 
-puts
-puts "Whats the traffic direction you wish to monitor?".foreground(:red).bright
+puts "\nWhats the traffic direction you wish to monitor?".foreground(:red).bright
 puts "Options available:".foreground(:cyan).bright 
 puts "[+] ->, <>".foreground(:cyan).bright
 print prompt
 traffic_direction = STDIN.gets.chomp()
 
-puts
-puts "Whats the destination ip address you wish to monitor?".foreground(:red).bright
+puts "\nWhats the destination ip address you wish to monitor?".foreground(:red).bright
 print prompt
 dst_ip = STDIN.gets.chomp()
 
-puts
-puts "Whats the destination port you wish to monitor?".foreground(:red).bright
+puts "\nWhats the destination port you wish to monitor?".foreground(:red).bright
 print prompt
 dst_port = STDIN.gets.chomp()
 
-puts
-puts "What rule message do you wish to use?".foreground(:red).bright
+puts "\nWhat rule message do you wish to use?".foreground(:red).bright
 puts "Options available: Message can be whatever you want it to be! Keylogger detected, APT, TROJAN, C2 Initial Beacon..... etc...".foreground(:cyan).bright
 print prompt
 rule_msg = STDIN.gets.chomp()
 
-puts
-puts "What rule options do you wish to use?".foreground(:red).bright
+puts "\nWhat rule options do you wish to use?".foreground(:red).bright
 puts "Content options available: content, nocase, rawbytes, ..... etc... *FULL official snort options coming soon".foreground(:cyan).bright
 print prompt
 rule_options = STDIN.gets.chomp()
 
-puts
-puts "What content keyword do you wish to use?".foreground(:red).bright
+puts "\nWhat content keyword do you wish to use?".foreground(:red).bright
 puts "Options available are whatever you like them to be based on your malware sample! w0rm1, 77 30 72 6d 31..... etc...".foreground(:cyan).bright
 print prompt
 content_keyword = STDIN.gets.chomp()
 
-
-puts
-puts "What classtype do you wish to use?".foreground(:red).bright
+puts "\nWhat classtype do you wish to use?".foreground(:red).bright
 puts "Options available:"
 puts "  ______________________________________________________________________________________________________________  "
 puts " |Classtype                      | Description                                                   | Priority     | "
@@ -151,19 +139,16 @@ puts "  unknown".foreground(:blue).bright + "                        | Unknown T
 puts "  tcp-connection".foreground(:blue).bright + "                 | A TCP connection was detected                                 | very low     | "
 puts "  _______________________________________________________________________________________________________________ "
 
-
 print prompt
 classtype = STDIN.gets.chomp()
 
-puts
-puts "What reference URL do you wish to use?".foreground(:red).bright
+puts "\nWhat reference URL do you wish to use?".foreground(:red).bright
 puts "PLEASE NOTE THAT THE http://www. IS NOT NEEDED AS ITS ALREADY HARDCODED FOR YOU!".foreground(:cyan).bright
 puts "Options available are: fireeye.com/blog/technical/botnet-activities/w0rm.html, etc....".foreground(:cyan).bright
 print prompt
 ref_url = STDIN.gets.chomp()
 
-puts
-puts "What SID do you wish to use?".foreground(:red).bright
+puts "\nWhat SID do you wish to use?".foreground(:red).bright
 puts "Options available:".foreground(:cyan).bright
 puts "< (less than) 100 Reserved for future use".foreground(:cyan).bright
 puts "100-999,999 Rules included with the Snort distribution".foreground(:cyan).bright
@@ -172,15 +157,12 @@ puts ">= (greater than or =) 1,000,000 Used for local rules".foreground(:cyan).b
 print prompt
 sid = STDIN.gets.chomp()
 
-puts
-puts "What revision do you wish to use?".foreground(:red).bright
+puts "\nWhat revision do you wish to use?".foreground(:red).bright
 puts "Options available are any numerical value 1..10... etc".foreground(:cyan).bright
 print prompt
 rev = STDIN.gets.chomp()
 
-puts
 puts <<MESSAGE
 Snort rule created successfully: 
 #{rule_action} #{protocol} #{src_ip} #{src_port} #{traffic_direction} #{dst_ip} #{dst_port} (msg: "#{rule_msg}"; #{rule_options}:"#{content_keyword}"; reference:url,#{ref_url; }; classtype:#{classtype}; sid: #{sid}; rev:#{rev})
 MESSAGE
-puts
