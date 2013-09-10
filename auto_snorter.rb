@@ -13,7 +13,7 @@ require 'rainbow'
            --==\\  /           Auto Snorter v0.0.1 Locked, stocked, and fully auto swine time... <////~
             --==\\/
           .-~~~~-.Y|\\_        by Rick Flores @nanotechz9l
-       @_/        /  66\_      0xnanotechz9l@gmail.com
+       @_/        /  66\_      0xnanoquetz9l[--at--]gmail.com
          |    \   \   _(")
           \   /-| ||'--'       Automation station!
             \_\  \_\\

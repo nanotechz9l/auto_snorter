@@ -3,6 +3,7 @@ Auto Snorter
 ==============
 
 This script automatically creates very simplified/dumb snort rules based on user input.
+
 Written by Rick Flores @nanotechz9l
 
 ![Screenhot](http://img22.imageshack.us/img22/3401/pc36.png)
