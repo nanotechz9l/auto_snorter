@@ -23,20 +23,40 @@ You *MUST install the rainbow gem for the pretty colorized output seen above:
 ## Features
 * Shell / Commandline (CLI) application allowing:
         * Follow the prompts, and you will end up with a fully working snort rule!
+
 	* The snort rule syntax is all hardcoded for you, no need to worry... just follow the prompts ;)
+
         * Snort rule header action (alert, log, pass, reject... etc)
-	* Protocol to analyze (tcp, udp, icmp, ip)
+
+	![Screenshot](http://img27.imageshack.us/img27/5471/4aif.png)
+
+        * Protocol to analyze (tcp, udp, icmp, ip)
+
 	* Source ip to monitor
+
         * Source port to monitor
+
         * Traffic direction operator to monitor
+
         * Destination ip
+
         * Destination port
+
         * Snort rule options, and message (msg: "Keylogger detected";
+
         * Snort content keywords
+
         * Classtype
+
+        ![Screenshot](http://img15.imageshack.us/img15/8223/4qih.png)
+
         * Reference URL
+
         * SID
+
         * Revision
+
+        ![Screenshot](http://img541.imageshack.us/img541/858/g5s2.png)
 
 ## Requirements
 * Tested on ruby version/s:
