@@ -74,6 +74,12 @@ print prompt
 src_port = STDIN.gets.chomp()
 
 puts
+puts "Whats the traffic direction you wish to monitor?".foreground(:red).bright
+puts "Options available: ->, <>".foreground(:cyan).bright
+print prompt
+traffic_direction = STDIN.gets.chomp()
+
+puts
 puts "Whats the destination ip address you wish to monitor?".foreground(:red).bright
 print prompt
 dst_ip = STDIN.gets.chomp()
@@ -82,12 +88,6 @@ puts
 puts "Whats the destination port you wish to monitor?".foreground(:red).bright
 print prompt
 dst_port = STDIN.gets.chomp()
-
-puts
-puts "Whats the traffic direction you wish to monitor?".foreground(:red).bright
-puts "Options available: ->, <>".foreground(:cyan).bright
-print prompt
-traffic_direction = STDIN.gets.chomp()
 
 puts
 puts "What rule message do you wish to use?".foreground(:red).bright
