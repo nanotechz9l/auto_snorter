@@ -43,14 +43,14 @@ puts "In order to generate the rule, I need to ask you a few questions.".foregro
 puts "\n\nWhich rule header option do you wish to use?".foreground(:red).bright
 puts "Options available:\n".foreground(:red).bright
 
-puts "[+]".foreground(:cyan).bright + " alert".foreground(:blue).bright    + " - generate an alert using the selected alert method, and then log the packet".foreground(:cyan).bright
-puts "[+]".foreground(:cyan).bright + " log".foreground(:blue).bright      + " - log the packet".foreground(:cyan).bright
-puts "[+]".foreground(:cyan).bright + " pass".foreground(:blue).bright     + " - ignore the packet".foreground(:cyan).bright
-puts "[+]".foreground(:cyan).bright + " activate".foreground(:blue).bright + " - alert and then turn on another dynamic rule".foreground(:cyan).bright
-puts "[+]".foreground(:cyan).bright + " dynamic".foreground(:blue).bright  + " - remain idle until activated by an activate rule , then act as a log rule".foreground(:cyan).bright
-puts "[+]".foreground(:cyan).bright + " drop".foreground(:blue).bright     + " - block and log the packet".foreground(:cyan).bright
-puts "[+]".foreground(:cyan).bright + " reject".foreground(:blue).bright   + " - block the packet, log it, and then send a TCP reset if the protocol is TCP or an ICMP port unreachable message if the protocol is UDP.".foreground(:cyan).bright
-puts "[+]".foreground(:cyan).bright + " sdrop".foreground(:blue).bright    + " - block the packet but do not log it.".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " alert".foreground(:blue).bright    + " \t- generate an alert using the selected alert method, and then log the packet".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " log".foreground(:blue).bright      + " \t- log the packet".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " pass".foreground(:blue).bright     + " \t- ignore the packet".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " activate".foreground(:blue).bright + " \t- alert and then turn on another dynamic rule".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " dynamic".foreground(:blue).bright  + " \t- remain idle until activated by an activate rule , then act as a log rule".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " drop".foreground(:blue).bright     + " \t- block and log the packet".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " reject".foreground(:blue).bright   + " \t- block the packet, log it, and then send a TCP reset if the protocol is TCP or an ICMP port unreachable message if the protocol is UDP.".foreground(:cyan).bright
+puts "[+]".foreground(:cyan).bright + " sdrop".foreground(:blue).bright    + " \t- block the packet but do not log it.".foreground(:cyan).bright
 print prompt
 rule_action = STDIN.gets.chomp()
 
