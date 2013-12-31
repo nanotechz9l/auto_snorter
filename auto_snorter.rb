@@ -21,21 +21,9 @@ require 'rainbow'
 end
 banner()
  
-prompt			= 'auto_snorter: '
-rule_action		= ARGV[0]
-protocol		= ARGV[1]
-src_ip			= ARGV[2]
-src_port		= ARGV[3]
-traffic_direction	= ARGV[4]
-dst_ip			= ARGV[5]
-dst_port		= ARGV[6]
-rule_msg		= ARGV[7]
-rule_options		= ARGV[8]
-content_keyword		= ARGV[9]
-classtype		= ARGV[10]
-ref_url			= ARGV[11]
-sid			= ARGV[12]
-rev			= ARGV[13]
+prompt = 'auto_snorter: '
+
+rule_action, protocol, src_ip, src_port, traffic_direction, dst_ip, dst_port, rule_msg, rule_options, content_keyword, classtype, ref_url, sid, rev = ARGV[0..13]
 
 puts "I will create a snort rule automatically for you".foreground(:blue).bright
 puts "In order to generate the rule, I need to ask you a few quick questions.".foreground(:blue).bright
@@ -163,6 +151,8 @@ print prompt
 rev = STDIN.gets.chomp()
 
 puts <<MESSAGE
-Snort rule created successfully: 
+Snort rule created successfully:
+
 #{rule_action} #{protocol} #{src_ip} #{src_port} #{traffic_direction} #{dst_ip} #{dst_port} (msg: "#{rule_msg}"; #{rule_options}:"#{content_keyword}"; reference:url,#{ref_url; }; classtype:#{classtype}; sid: #{sid}; rev:#{rev})
+
 MESSAGE
