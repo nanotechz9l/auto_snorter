@@ -29,12 +29,3 @@ r = PacketFu::PcapFile.read(pcap)
 
 # Print packet size to user
 puts "#{r}".size.to_s.foreground(:magenta).bright + " bytes\n".rjust(9).foreground(:magenta).bright
-
-# Read Source IP's
-#src = PacketFu::IPHeader.ip_saddr(pcap)
-
-# Read Destination IP's
-#dst = PacketFu::IPHeader.ip_daddr(pcap)
-
-#puts src
-#puts dst
