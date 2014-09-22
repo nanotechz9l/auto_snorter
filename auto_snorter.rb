@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby 
-require 'rainbow'
+require 'rainbow/ext/string'
 
 # This script automatically creates very simplified snort rules based on user input.
 
